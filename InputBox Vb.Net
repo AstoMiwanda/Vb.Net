@@ -1,0 +1,39 @@
+Public Class FrmInputBox
+    Dim vNama As String
+    Dim vGajiPokok As Single
+    Dim vPajak As Single
+    Dim vGaji As Single
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim Nama As String
+        Dim Gaji As Single
+        Nama = InputBox("Masukan Nama Anda : ", "Input Nama")
+        Gaji = InputBox("Masukan Gaji Anda : ", "Input Gaji")
+        vNama = Nama
+        vGajiPokok = Gaji
+        vPajak = Gaji * 0.1
+        vGaji = Gaji - vPajak
+        Label1.Visible = True
+        Label1.Text = "Nama Anda : " & vNama
+        Label2.Visible = True
+        Label2.Text = "Gaji Pokok : " & Gaji
+        Label3.Visible = True
+        Label3.Text = "Pajak Penghasilan : " & vPajak
+        Label4.Visible = True
+        Label4.Text = "Gaji Bersih : " & vGaji
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Label1.Text = "Nama Anda : "
+        Label2.Text = "Gaji Pokok : "
+        Label3.Text = "Pajak Penghasilan : "
+        Label4.Text = "Gaji Bersih : "
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Me.Close()
+    End Sub
+End Class
+
+
+//Created by Astocreation//
