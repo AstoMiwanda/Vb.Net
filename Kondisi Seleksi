@@ -1,0 +1,119 @@
+Public Class FrmSeleksiKondisi
+    Dim Nilai As Integer = 89
+    Dim Ket As String
+    Dim NH As String
+    Dim Predikat As String
+    Private Sub FrmSeleksiKondisi_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        'seleksi kondisi dengan statement If
+        'if <criteria> Then
+        ' <intruksi benar>
+        'else
+        ' <intruksi salah>
+        'End If
+        If Nilai >= 75 Then
+            Ket = "Lulus"
+        Else
+            Ket = "Gagal"
+        End If
+        Label1.Text = "Nilai Anda : " & Nilai
+        Label2.Text = "Keterangan : " & Ket
+        'Seleksi kondisi dengan banyak kriteria
+        If Nilai > 90 Then
+            NH = "A"
+        ElseIf Nilai > 80 Then
+            NH = "B"
+        ElseIf Nilai >= 70 Then
+            NH = "C"
+        ElseIf Nilai >= 60 Then
+            NH = "D"
+        End If
+        Label3.Text = "Nilai Huruf : " & NH
+        'Seleksi kondisi dengan statement CASE
+        'Select CASE <Variable/Value>
+        '   Case <Criteria>
+        '       <intruksi benar>
+        '   Case Else
+        '       <intruksi salah>
+        'End Select
+        Select Case Nilai
+            Case Is >= 75
+                Ket = "Kompeten"
+            Case Else
+                Ket = "Belum Komputen"
+        End Select
+        Label4.Text = "Keterangan : " & Ket
+        'Seleksi kondisi untuk banyak kriteria menggunakan statement CASE
+        Select Case NH
+            Case "A"
+                Predikat = "Sangat Baik"
+            Case "B"
+                Predikat = "Baik"
+            Case "C"
+                Predikat = "Cukup"
+            Case "D"
+                Predikat = "Kurang"
+        End Select
+        Label5.Text = "Predikat : " & Predikat
+        'Menampilkan hari sesuai sistem menggukan seleksi kondisi CASE
+        Dim acTanggal As DateTime
+        Dim acNoHari As String
+        Dim acNamaHari
+        acTanggal = DateTime.Today
+        acNoHari = DateAndTime.Now.DayOfWeek
+        Select Case acNoHari
+            Case "1"
+                acNamaHari = "Senin"
+            Case "2"
+                acNamaHari = "Selasa"
+            Case "3"
+                acNamaHari = "Rabu"
+            Case "4"
+                acNamaHari = "Kamis"
+            Case "5"
+                acNamaHari = "Jum'at"
+            Case "6"
+                acNamaHari = "Sabtu"
+            Case 7
+                acNamaHari = "Minggu"
+        End Select
+        Label11.Text = acNamaHari & ", " & acTanggal
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Select Case Nilai
+            Case Is >= 75
+                Ket = "Lulus"
+            Case Else
+                Ket = "Tidak Lulus"
+        End Select
+        Select Case Nilai
+            Case > 90
+                NH = "A"
+            Case > 80
+                NH = "B"
+            Case >= 70
+                NH = "C"
+            Case >= 60
+                NH = "D"
+        End Select
+        Label10.Text = "Nilai : " & Nilai
+        Label9.Text = "Keterangan : " & Ket
+        If Nilai >= 75 Then
+            Ket = "Kompeten"
+        Else
+            Ket = "Belum Kompeten"
+        End If
+        If NH = "A" Then
+            Predikat = "Sangat Baik"
+        ElseIf NH = "B" Then
+            Predikat = "Baik"
+        ElseIf NH = "C" Then
+            Predikat = "Cukup"
+        ElseIf NH = "D" Then
+            Predikat = "Kurang"
+        End If
+        Label8.Text = "Nilai Huruf : " & NH
+        Label7.Text = "Keterangan : " & Ket
+        Label6.Text = "Predikat : " & Predikat
+    End Sub
+End Class
