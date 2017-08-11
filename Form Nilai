@@ -1,0 +1,150 @@
+Public Class FrmTugas
+    Private Sub FormNilai_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        Dim acHari As Integer = Weekday(Now)
+        Dim acNamaHari As String
+        Select Case acHari
+            Case 1
+                acNamaHari = "Minggu"
+            Case 2
+                acNamaHari = "Senin"
+            Case 3
+                acNamaHari = "Selasa"
+            Case 4
+                acNamaHari = "Rabu"
+            Case 5
+                acNamaHari = "Kamis"
+            Case 6
+                acNamaHari = "Jum'at"
+            Case 7
+                acNamaHari = "Sabtu"
+        End Select
+        Label1.Text = acNamaHari & ", " & Format(Date.Today, "dd MMMM yyyy")
+        Call Kosong()
+    End Sub
+
+    Private Sub FormNilai_Load(sender As Object, e As EventArgs) Handles Me.Load
+        With cboKelas
+            .Items.Add("XI RPL 1")
+            .Items.Add("XI RPL 2")
+            .Items.Add("XI RPL 3")
+            .Items.Add("XI RPL 4")
+        End With
+        tmrJam.Enabled = True
+    End Sub
+    Public Sub Kosong()
+        tNIS.Enabled = False
+        tNama.Enabled = False
+        cboKelas.Enabled = False
+        tNInggris.Enabled = False
+        tNIndonesia.Enabled = False
+        tNMatematika.Enabled = False
+        tNRata.Enabled = False
+        tKeterangan.Enabled = False
+        tHuruf.Enabled = False
+        tPredikat.Enabled = False
+        tNIS.Text = ""
+        tNama.Text = ""
+        cboKelas.Text = ""
+        tNInggris.Text = ""
+        tNIndonesia.Text = ""
+        tNMatematika.Text = ""
+        tNRata.Text = ""
+        tKeterangan.Text = ""
+        tHuruf.Text = ""
+        tPredikat.Text = ""
+        btnInput.Focus()
+    End Sub
+
+    Private Sub btnInput_Click(sender As Object, e As EventArgs) Handles btnInput.Click
+        tNIS.Enabled = True
+        tNIS.Focus()
+    End Sub
+
+    Private Sub tNIS_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tNIS.KeyPress
+        If e.KeyChar = Chr(13) Then
+            tNama.Enabled = True
+            tNama.Focus()
+        End If
+    End Sub
+
+    Private Sub tNama_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tNama.KeyPress
+        If e.KeyChar = Chr(13) Then
+            cboKelas.Enabled = True
+            cboKelas.Focus()
+        End If
+    End Sub
+
+    Private Sub cboKelas_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cboKelas.KeyPress
+        If e.KeyChar = Chr(13) Then
+            tNInggris.Enabled = True
+            tNInggris.Focus()
+        End If
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        End
+    End Sub
+
+    Private Sub tmrJam_Tick(sender As Object, e As EventArgs) Handles tmrJam.Tick
+        Label2.Text = Format(Now, "HH:mm:ss")
+    End Sub
+
+    Private Sub tNInggris_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tNInggris.KeyPress
+        If e.KeyChar = Chr(13) Then
+            tNIndonesia.Enabled = True
+            tNIndonesia.Focus()
+        End If
+    End Sub
+
+    Private Sub tNIndonesia_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tNIndonesia.KeyPress
+        If e.KeyChar = Chr(13) Then
+            tNMatematika.Enabled = True
+            tNMatematika.Focus()
+        End If
+    End Sub
+
+    Private Sub tNIndonesia_TextChanged(sender As Object, e As EventArgs) Handles tNIndonesia.TextChanged
+
+    End Sub
+
+    Private Sub tNMatematika_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tNMatematika.KeyPress
+        If e.KeyChar = Chr(13) Then
+            Dim acNRata As Integer
+            Dim acKeterangan, acNH, acPredikat As String
+            acNRata = (Val(tNInggris.Text) + Val(tNIndonesia.Text) + Val(tNMatematika.Text)) / 3
+            If acNRata >= 75 Then
+                acKeterangan = "Lulus"
+            Else
+                acKeterangan = "Gagal"
+            End If
+            Select Case acNRata
+                Case Is >= 95
+                    acNH = "A"
+                    acPredikat = "Sangat Baik"
+                Case Is >= 85
+                    acNH = "B"
+                    acPredikat = "Baik"
+                Case Is >= 75
+                    acNH = "C"
+                    acPredikat = "Cukup"
+                Case Is >= 60
+                    acNH = "D"
+                    acPredikat = "Kurang"
+                Case Else
+                    acNH = "E"
+                    acPredikat = "Sangat Kurang"
+            End Select
+            tNRata.Text = acNRata
+            tKeterangan.Text = acKeterangan
+            tHuruf.Text = acNH
+            tPredikat.Text = acPredikat
+            btnClear.Focus()
+        End If
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        Call Kosong()
+    End Sub
+End Class
+
+'CreatedByAstocreation
