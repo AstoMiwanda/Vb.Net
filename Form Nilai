@@ -1,5 +1,5 @@
 Public Class FrmTugas
-    Private Sub FormNilai_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+    Private Sub FrmTugas_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         Dim acHari As Integer = Weekday(Now)
         Dim acNamaHari As String
         Select Case acHari
@@ -22,7 +22,7 @@ Public Class FrmTugas
         Call Kosong()
     End Sub
 
-    Private Sub FormNilai_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub FrmTugas_Load(sender As Object, e As EventArgs) Handles Me.Load
         With cboKelas
             .Items.Add("XI RPL 1")
             .Items.Add("XI RPL 2")
