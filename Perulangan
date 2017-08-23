@@ -1,0 +1,65 @@
+Public Class perulangan
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'Perulangan menggunakan FOR TO NEXT
+        'FOR <Var> = <Nilai Awal> TO <Nilai Akhir>
+        '   <ekspresi>
+        'NEXT
+        Dim i As Integer
+        Dim nilaiAwal As Integer = TextBox1.Text
+        Dim nilaiAkhir As Integer = TextBox2.Text
+        Dim acstep As Integer = TextBox3.Text
+        ListBox1.Items.Clear()
+        For i = nilaiAwal To nilaiAkhir Step acstep
+            ListBox1.Items.Add(i)
+        Next
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        'Perulangan menggunakan DO WHILE
+        'DO WHILE <Kriteria>
+        '   <Ekspresi>
+        '<LOOP>
+        Dim nilaiAwal As Integer = TextBox1.Text
+        Dim nilaiAkhir As Integer = TextBox2.Text
+        Dim acstep As Integer = TextBox3.Text
+        Dim i As Integer = nilaiAwal
+        ListBox1.Items.Clear()
+        Do While i <= nilaiAkhir 'PErulangan akan dikerjakan jika kriteria bernilai true
+            ListBox1.Items.Add(i)
+            i += acstep 'Step secara manual I = I + 1
+        Loop
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        'Perulangan menggunakan DO UNTIL
+        'DO UNTIL <Kriteria<
+        '   <ekspresi>
+        'LOOP
+        Dim nilaiAwal As Integer = TextBox1.Text
+        Dim nilaiAkhir As Integer = TextBox2.Text
+        Dim acstep As Integer = TextBox3.Text
+        Dim i As Integer = nilaiAwal
+        ListBox1.Items.Clear()
+        Do Until i > nilaiAkhir
+            ListBox1.Items.Add(i)
+            i += acstep
+        Loop
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        'Perulangan menggunakan WHILE
+        'WHILE <Kriteria>
+        '   <ekspresi>
+        'END WHILE
+        Dim nilaiAwal As Integer = TextBox1.Text
+        Dim nilaiAkhir As Integer = TextBox2.Text
+        Dim acstep As Integer = TextBox3.Text
+        Dim i As Integer = nilaiAwal
+        ListBox1.Items.Clear()
+        While i <= nilaiAkhir
+            ListBox1.Items.Add(i)
+            i += acstep
+        End While
+    End Sub
+End Class
